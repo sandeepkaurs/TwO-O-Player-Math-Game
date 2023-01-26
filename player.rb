@@ -15,12 +15,17 @@ class Player
   end
 
   # code so we print statement in given example in assignment
-  # still need to create if stmt
   def new_question
     new_question = Question.new
     puts "#{name}: What does #{new_question.num1} plus #{new_question.num2} equal?"
     print "> "
+    @userchoice = $stdin.gets.chomp
+    if new_question.check_answer?(@userchoice.to_i)
+      puts "YES! You are correct."
+    else
+      puts "Seriously? No!"
+      take_life
+    end  
   end
-
 end
   
